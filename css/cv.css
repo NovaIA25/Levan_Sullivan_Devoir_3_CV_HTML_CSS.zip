@@ -62,15 +62,19 @@ h1,h2{font-family:"Lato",sans-serif}
   color:#fff;text-decoration:none;border-bottom:1px solid transparent;
   display:inline-flex;align-items:center;gap:8px;
 }
+
 .hero .icon{
   width:16px;height:16px;
-  color:#fff;                 /* currentColor = blanc */
-  fill:currentColor;          /* certains navigateurs lisent fill sur <svg> */
+  color:#fff;
+  fill:currentColor;
   vertical-align:-2px;
 }
+.hero .icon use,
+.hero .icon path,
+.hero .icon circle{ fill:currentColor }
+
 
 /* === Sidebar === */
-/* remplace ces règles */
 .sidebar h2{
   color:var(--primary);
   font-size:20px;
@@ -103,26 +107,35 @@ h1,h2{font-family:"Lato",sans-serif}
 .stars[data-note="4"]::before{content:"★★★★☆";color:var(--primary)}
 .stars[data-note="5"]::before{content:"★★★★★";color:var(--primary)}
 
-/* Listes à puces carrées turquoises */
+/* Puces carrées turquoises */
 .bullets{list-style:square;padding-left:18px;margin:0}
 .bullets li::marker{color:var(--primary);font-size:.9em}
+
 /* fallback si ::marker non supporté */
 @supports not selector(::marker){
   .bullets{list-style:none;padding-left:0}
   .bullets li{position:relative;padding-left:18px}
   .bullets li::before{
-    content:"";width:8px;height:8px;background:var(--primary);
-    position:absolute;left:0;top:.7em;
+    content:"";
+    width:8px;height:8px;background:var(--primary);
+    position:absolute;left:0;top:.7em; /* ; + .7em au lieu de 7em */
   }
 }
 
 /* Langues en 2 colonnes (utiliser <ul class="list-2col">) */
 .list-2col{
-  display:grid;grid-template-columns:1fr auto;row-gap:8px;margin:0;padding:0;list-style:none;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  column-gap:16px;
+  row-gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  align-items:baseline;
 }
 .list-2col li{display:contents}
 .list-2col b{font-weight:700}
-.list-2col span{text-align:right}
+.list-2col span{text-align:left}
 
 /* === Contenu === */
 .content{
