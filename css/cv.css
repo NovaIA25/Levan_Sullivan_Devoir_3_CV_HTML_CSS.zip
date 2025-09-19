@@ -62,8 +62,12 @@ h1,h2{font-family:"Lato",sans-serif}
   color:#fff;text-decoration:none;border-bottom:1px solid transparent;
   display:inline-flex;align-items:center;gap:8px;
 }
-.contacts a:hover{border-bottom-color:#fff}
-.icon{width:16px;height:16px;display:inline-block}
+.hero .icon{
+  width:16px;height:16px;
+  color:#fff;                 /* currentColor = blanc */
+  fill:currentColor;          /* certains navigateurs lisent fill sur <svg> */
+  vertical-align:-2px;
+}
 
 /* === Sidebar === */
 /* remplace ces règles */
